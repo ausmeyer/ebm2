@@ -28,15 +28,33 @@ class: middle
 
 **Epidemiology 1 - times**
 <br>
-1. Repeat Some Statistics - ? minutes
+1. Must Know - ? minutes
 <br><br>
 2. Study Bias - 10 minutes
 <br><br>
-3. Brief Overview of Stats for Last Time - 5 minutes
+3. Repeat Some Statistics - ? minutes
 <br><br>
-4. Types of Studies and Associated Stats - 15 minutes
+4. Brief Overview of Stats for Last Time - 5 minutes
 <br><br>
-5. Limitations of Each Study - 10 minutes
+5. Types of Studies and Associated Stats - 15 minutes
+<br><br>
+6. Limitations of Each Study - 10 minutes
+
+---
+
+class: middle
+
+# Must Know
+--
+<br>
+- **Internal Validity**
+--
+  - Results of a study represent the truth of the study population
+--
+<br><br>
+- **External Validity**
+--
+  - Results of a study apply to populations that aren't studied
 
 ---
 
@@ -106,6 +124,121 @@ class: middle
 
 - **Loss-to-follow up**
   - Subjects randomly do not report for scheduled followup
+
+---
+
+class: middle, center
+
+# Repeat Some Statistical Things
+
+---
+
+class: middle, center
+
+# Risk Ratio (RR)
+**Only use on random samples**
+
+```{r risk-ratio, fig.height=4, fig.width=6}
+# Example data
+dat <- data.frame(Group = factor(c("Exposed", "Non-Exposed"), levels = c("Exposed", "Non-Exposed")),
+                  Disease = c(30, 20),
+                  No_Disease = c(70, 80)) 
+dat$Total <- dat$Disease + dat$No_Disease
+
+# Calculate Risk Ratio
+RR <- (dat$Disease[1] / dat$Total[1]) / (dat$Disease[2] / dat$Total[2])
+
+# Calculate CI
+CI.h <- exp(log(RR) + 1.96*sqrt(1/dat$Disease[1] + 1/dat$Disease[2] + 1/(dat$Disease[1] + dat$No_Disease[1]) - 1/(dat$Disease[2] + dat$No_Disease[2])))
+CI.l <- exp(log(RR) - 1.96*sqrt(1/dat$Disease[1] + 1/dat$Disease[2] - 1/(dat$Disease[1] + dat$No_Disease[1]) - 1/(dat$Disease[2] + dat$No_Disease[2])))
+```
+
+.pull-left[
+```{r, results='asis'}
+cat('
+<table>
+<tr><th align="left"></th><th align="right">Disease</th><th align="right">No Disease</th><th align="right">Total</th></tr>
+<tr><td align="left">Exposed</td><td align="right">30</td><td align="right">70</td><td align="right">100</td></tr>
+<tr><td align="left">Not Exposed</td><td align="right">20</td><td align="right">80</td><td align="right">100</td></tr>
+<tr><td align="left">Total</td><td align="right">50</td><td align="right">150</td><td align="right">200</td></tr>
+</table>
+')
+```
+]
+
+.pull-right[
+.left[
+$R_E = \frac{D_E}{D_E + ND_E} = \frac{30}{30 + 70} = 0.3$<br><br>
+$R_{NE} = \frac{D_{NE}}{D_{NE} + ND_{NE}} = \frac{20}{20 + 80} = 0.2$<br><br>
+$RR = \frac{R_E}{R_{NE}} = \frac{0.3}{0.2} =$ **`r RR`**
+]
+]
+
+---
+
+class: middle, center
+
+# Risk Difference (RD)...<br> Absolute Risk Reduction (ARR)
+
+```{r risk-difference, fig.height=4, fig.width=6}
+# Calculate Risk Difference
+RD <- (dat$Disease[1] / dat$Total[1]) - (dat$Disease[2] / dat$Total[2])
+```
+
+.pull-left[
+```{r, results='asis'}
+cat('
+<table>
+<tr><th align="left"></th><th align="right">Disease</th><th align="right">No Disease</th><th align="right">Total</th></tr>
+<tr><td align="left">Exposed</td><td align="right">30</td><td align="right">70</td><td align="right">100</td></tr>
+<tr><td align="left">Not Exposed</td><td align="right">20</td><td align="right">80</td><td align="right">100</td></tr>
+<tr><td align="left">Total</td><td align="right">50</td><td align="right">150</td><td align="right">200</td></tr>
+</table>
+')
+```
+]
+
+.pull-right[
+.left[
+$R_E = \frac{D_E}{D_E + ND_E} = \frac{30}{30 + 70} = 0.3$<br><br>
+$R_{NE} = \frac{D_{NE}}{D_{NE} + ND_{NE}} = \frac{20}{20 + 80} = 0.2$<br><br>
+$ARR = RD = R_E - R_{NE} = 0.3 - 0.2 =$ **`r RD`**
+]
+]
+
+---
+
+class: middle, center
+
+# Number Needed to Harm or Treat<br>(NNH or NNT)
+
+```{r nnt, fig.height=4, fig.width=6}
+# Calculate Number Needed to Treat
+NNT <- 1 / abs(RD)
+```
+
+.pull-left[
+<br>
+```{r, results='asis'}
+cat('
+<table>
+<tr><th align="left"></th><th align="right">Disease</th><th align="right">No Disease</th><th align="right">Total</th></tr>
+<tr><td align="left">Exposed</td><td align="right">30</td><td align="right">70</td><td align="right">100</td></tr>
+<tr><td align="left">Not Exposed</td><td align="right">20</td><td align="right">80</td><td align="right">100</td></tr>
+<tr><td align="left">Total</td><td align="right">50</td><td align="right">150</td><td align="right">200</td></tr>
+</table>
+')
+```
+]
+
+.pull-right[
+.left[
+$R_E = \frac{D_E}{D_E + ND_E} = \frac{30}{30 + 70} = 0.3$<br><br>
+$R_{NE} = \frac{D_{NE}}{D_{NE} + ND_{NE}} = \frac{20}{20 + 80} = 0.2$<br><br>
+$RD = R_E - R_{NE} = 0.3 - 0.2 = 0.1$<br><br>
+$NNH = \frac{1}{RD} = \frac{1}{ARR} = \frac{1}{0.1} =$ **`r NNT`**
+]
+]
 
 ---
 
