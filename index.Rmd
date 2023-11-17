@@ -28,13 +28,15 @@ class: middle
 
 **Epidemiology 1 - times**
 <br>
-1. Study Bias - 10 minutes
+1. Repeat Some Statistics - ? minutes
 <br><br>
-2. Brief Overview of Stats for Last Time - 5 minutes
+2. Study Bias - 10 minutes
 <br><br>
-3. Types of Studies and Associated Stats - 15 minutes
+3. Brief Overview of Stats for Last Time - 5 minutes
 <br><br>
-4. Limitations of Each Study - 10 minutes
+4. Types of Studies and Associated Stats - 15 minutes
+<br><br>
+5. Limitations of Each Study - 10 minutes
 
 ---
 
