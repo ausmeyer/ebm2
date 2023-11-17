@@ -300,6 +300,26 @@ class: middle
 
 class: middle
 
+# Randomized control - limitations
+
+- Can still technically suffer from selection bias (as defined by epidemiologists). Why?
+--
+<br>
+  - Loss to follow up
+--
+<br><br>
+- They may or may not externalize well
+--
+<br><br>
+- There are may ethical concerns in pediatrics
+--
+<br><br>
+- They are ridiculously expensive
+
+---
+
+class: middle
+
 # Crossover trial - groups switch
 
 <img src="figs/crossover.png" width="100%" />
@@ -346,20 +366,23 @@ class: middle
  
 --
 
-- Can use relative risk because investigator knows prevalence of exposure and disease
+- Can still use relative risk because investigator knows prevalence of exposure and disease
 - Subjects vary by exposure status
 - Can calculate incidence
 --
-
+<br><br>
 - __Selection bias__ is the biggest problem
   - Investigator has infinite control over inclusion
 --
-
-- Other biases
-  - Attrition, loss-to-follow up, confounding, Hawthorne
+<br><br>
+- Other Prospective biases
+  - Attrition - people leave the trial intentionally
+  - Loss-to-follow up - people just stop showing up
+  - Confounding - baseline characteristics or ongoing characteristics are difference
+  - Hawthorne - people act differently once observed
 --
-
-- Retrospective
+<br><br>
+- Retrospective bias
   - Information bias
 
 ---
@@ -379,21 +402,24 @@ class: middle
 
 - Must use odds ratio because investigator does not know prevalence of disease
 --
+<br><br>
 - Subjects grouped by cases and controls
   - Measure __odds of exposure__ in case and control groups
 --
+<br><br>
 - Significantly improved power and decreased resource requirements compared to cohorts 
   - Due to cases being selected at out set
 --
+<br><br>
 - __Selection and Recall biases__ are the biggest problem
   - Selecting appropriate controls is __highly__ non-trivial
   - Sick people remember exposures (e.g. Melanoma patients stew about their sunburns)
 --
-  
+<br><br>
 - Also common
    - Information biases
 --
-
+<br><br>
 - __Cannot calculate incidence or prevalence__
 
 ---
@@ -415,19 +441,19 @@ class: middle
 - __Quick, cheap, and easy__
   - Typically this is a starting point
 --
-
+<br><br>
 - Can establish prevalence of disease
 --
-
+<br><br>
 - Must use chi-squared or correlation for statistical test
 --
-
+<br><br>
 - Subjects can be grouped by exposure and diease in to the 2x2 contingency
 --
 <br><br>
 - __Cannot establish causation__
 --
-
+<br><br>
 - Cannot calculate risk metrics
  
 ---
